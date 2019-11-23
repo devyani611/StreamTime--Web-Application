@@ -37,21 +37,65 @@
         .col-3{
             font-weight: bold;
         }
+        .navbar_styling {
+            background: darkcyan;
+        }
+
+        .navbar-toggler-icon {
+            background: black;
+        }
+
+        .navbar-collapse .navbar-nav .nav-item .nav-link {
+            color: black;
+        }
+
+        .navbar-brand {
+           color: black;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+        }
+
+        .navbar-toggler {
+            border-color:black;
+        }
     </style>
 </head>
 
 <body>
+        <nav class="navbar navbar-expand-sm navbar_styling">
+                <a class="navbar-brand" href="index.html">StreamTime</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+        
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto content_styling">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
     <div class="container">
         <div class="row">
             <div class="col-8">
-                <form class="text-center mx-auto" style="width: 100%;" onsubmit="moviesearch(event)">
+                <form class="text-center mx-auto" style="width: 100%;">
                     <div class="col-8 heading">
-                        Search for your favourite movie
+                        Search for your favourite movie and TV shows
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" name="data" id="data">
                     </div>
-                    <button type="Submit" class="btn btn-primary">Search</button>
+                    <button type="Submit" class="btn btn-primary" onclick="moviesearch(event)">Get Movie Info</button>
+                    <button type="Submit" class="btn btn-primary">Get Streaming Links</button>
                 </form>
             </div>
         </div>

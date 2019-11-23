@@ -26,9 +26,10 @@ function moviesearch(event) {
                     })
                         .then(response => response.json())
                         .then(response => {
+                            console.log(response);
                             /**Linking to index.html */
-                            var divelement = document.getElementById('add_Array');                         
-                           
+                            var divelement = document.getElementById('add_Array');
+
                             /**Creating a Bootstrap grid container */
                             var cgrid = document.createElement('div');
                             cgrid.className = 'container';
@@ -38,12 +39,12 @@ function moviesearch(event) {
                             /**Creating a Bootstrap grid row for Image */
                             var rgrid = document.createElement('div');
                             rgrid.className = 'row';
-                            rgrid.style.marginBottom="5%";
+                            rgrid.style.marginBottom = "5%";
                             /**Image element */
                             var cpic = document.createElement('img')
                             if (response.Poster != "N/A") {
                                 cpic.src = response.Poster;
-                                cpic.id = "Image";                                
+                                cpic.id = "Image";
                                 cpic.alt = response.Title + ' Poster';
                                 rgrid.appendChild(cpic);
                                 cgrid.appendChild(rgrid);
@@ -243,6 +244,58 @@ function moviesearch(event) {
                             cgrid.appendChild(rrgrid);
                             divelement.appendChild(cgrid);
 
+                            var rrgrid = document.createElement('div');
+                            rrgrid.className = 'row';
+
+                            var ctitle = document.createElement('div');
+                            ctitle.className = 'col-3';
+                            ctitle.innerHTML = "Year :";
+
+                            var ccontent = document.createElement('div');
+                            ccontent.className = 'col';
+                            ccontent.innerHTML = response.Year;
+
+                            rrgrid.append(ctitle);
+                            rrgrid.append(ccontent);
+                            cgrid.appendChild(rrgrid);
+                            divelement.appendChild(cgrid);
+
+                            var rrgrid = document.createElement('div');
+                            rrgrid.className = 'row';
+
+                            var ctitle = document.createElement('div');
+                            ctitle.className = 'col-3';
+                            ctitle.innerHTML = "Type :";
+
+                            var ccontent = document.createElement('div');
+                            ccontent.className = 'col';
+                            ccontent.innerHTML = response.Type;
+
+                            rrgrid.append(ctitle);
+                            rrgrid.append(ccontent);
+                            cgrid.appendChild(rrgrid);
+                            divelement.appendChild(cgrid);
+
+                            if(response.Type=="series"){
+                                var rrgrid = document.createElement('div');
+                                rrgrid.className = 'row';
+    
+                                var ctitle = document.createElement('div');
+                                ctitle.className = 'col-3';
+                                ctitle.innerHTML = "Number of Seasons :";
+    
+                                var ccontent = document.createElement('div');
+                                ccontent.className = 'col';
+                                ccontent.innerHTML = response.totalSeasons;
+    
+                                rrgrid.append(ctitle);
+                                rrgrid.append(ccontent);
+                                cgrid.appendChild(rrgrid);
+                                divelement.appendChild(cgrid);
+                            }
+
+
+
                             for (j in response.Ratings) {
                                 var rrgrid = document.createElement('div');
                                 rrgrid.className = 'row';
@@ -270,7 +323,7 @@ function moviesearch(event) {
                 document.getElementById('Result').innerHTML = "Sorry, Movie not found !";
             }
         }
-   
+
         );
 
 }
