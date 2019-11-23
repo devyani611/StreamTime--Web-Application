@@ -2,6 +2,10 @@ function moviesearch(event) {
     event.preventDefault();
     var data = document.getElementById("data").value;
     data = data.replace(" ", "+");
+    fetch("https://serpapi.com/playground?engine=google&q=Apple&tbm=isch&ijn=0")
+        .then(response =>
+            console.log(response.json())
+        )
     fetch("https://movie-database-imdb-alternative.p.rapidapi.com/?page=1&r=json&s=" + data, {
         "method": "GET",
         "headers": {
@@ -26,7 +30,6 @@ function moviesearch(event) {
                     })
                         .then(response => response.json())
                         .then(response => {
-                            console.log(response);
                             /**Linking to index.html */
                             var divelement = document.getElementById('add_Array');
 
