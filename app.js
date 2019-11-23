@@ -16,7 +16,6 @@ function moviesearch(event) {
             if (data.Response == "True") {
                 document.getElementById('Result').innerHTML = 'Search Results ';
                 for (i in data.Search) {
-                    console.log(data.Search[i]);
                     imdbid = data.Search[i].imdbID;
                     fetch("https://movie-database-imdb-alternative.p.rapidapi.com/?i=" + imdbid + "&r=json", {
                         "method": "GET",
@@ -28,7 +27,8 @@ function moviesearch(event) {
                         .then(response => response.json())
                         .then(response => {
                             /**Linking to index.html */
-                            var divelement = document.getElementById('add_Array');
+                            var divelement = document.getElementById('add_Array');                         
+                           
                             /**Creating a Bootstrap grid container */
                             var cgrid = document.createElement('div');
                             cgrid.className = 'container';
