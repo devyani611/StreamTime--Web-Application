@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>MovieSearch</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        .col-8 {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .heading,
+        h3 {
+            font-size: 5vh;
+            padding: 1cm;
+            font-family: cursive;
+        }
+
+        .container {
+            margin-top: 5%;
+        }
+
+        #Result {
+            font-size: 5vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+                <form class="text-center mx-auto" style="width: 100%;" onsubmit="moviesearch(event)">
+                    <div class="col-8 heading">
+                        Search for your favourite movie
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="data" id="data">
+                    </div>
+                    <button type="Submit" class="btn btn-primary">Search</button>
+                </form>
+            </div>
+        </div>
+        <div class="row" id="Result"></div>
+        <div class="row">
+            <div class="col-2" id="Title"></div>
+            <div class="col" id="Title_Result"></div>
+        </div>
+        <div class="row">
+            <div class="col-2" id="Language"></div>
+            <div class="col" id="Language_Result"></div>
+        </div>
+        <div class="row">
+            <div class="col-2" id="Year"></div>
+            <div class="col" id="Year_Result"></div>
+        </div>
+        <div class="row">
+            <div class="col-2" id="Plot"></div>
+            <div class="col" id="Plot_Result"></div>
+        </div>
+        <div class="row">
+            <div class="col-2" id="Runtime"></div>
+            <div class="col" id="Runtime_Result"></div>
+        </div>
+        <div class="row">
+            <div class="col-2" id="Genre"></div>
+            <div class="col" id="Genre_Result"></div>
+        </div>
+        <div class="row">
+            <div class="col-2" id="Director"></div>
+            <div class="col" id="Director_Result"></div>
+        </div>
+        <div class="row">
+            <div class="col-2" id="Actors"></div>
+            <div class="col" id="Actors_Result"></div>
+        </div>
+        <div class="row">
+            <div class="col-2" id="Writers"></div>
+            <div class="col" id="Writers_Result"></div>
+        </div>
+        <div class="row">
+            <div class="col-2" id="Production"></div>
+            <div class="col" id="Production_Result"></div>
+        </div>
+        <div class="row">
+            <div class="col-2" id="Boxoffice"></div>
+            <div class="col" id="Boxoffice_Result"></div>
+        </div>
+
+    </div>
+
+
+    <script src="app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
