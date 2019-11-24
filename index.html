@@ -25,20 +25,7 @@
         .container {
             padding: 1%;
             margin-bottom: 2%;
-        }
-
-        #Result {
-            font-size: 5vh;
-        }
-
-        #Image {
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .col-3 {
-            font-weight: bold;
-        }
+        }       
 
         .navbar_styling {
             background: darkcyan;
@@ -111,7 +98,7 @@
                         <input type="text" class="form-control" name="data" id="data">
                     </div>
 
-                    <button type="Submit" class="btn btn-primary" onclick="moviesearch(event)">Get Movie
+                    <button type="Submit" class="btn btn-primary" onclick="movieDetailSearch(event)">Get Movie
                         Info</button>
 
                     <button type="Submit" class="btn btn-primary" onclick="getstreaminglinks(event)">Get Streaming Links</button>
@@ -140,13 +127,8 @@
                 <img src="hbo.png" alt="HBO Logo" id="image_dimension">
             </div>
         </div>
-
     </div>
-    <div id="Result">
-    </div>
-    <div id="add_Array">
-    </div>
-
+   
 
 
     <script src="app.js"></script>

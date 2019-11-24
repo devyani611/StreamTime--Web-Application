@@ -5,21 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>MovieSearch</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>About</title>
     <style>
-        .navbar_styling {
-            background: darkcyan;
+        .container {
+            padding: 1%;
+            margin-bottom: 2%;
         }
 
-        footer {
-            position: absolute;
-            background: darkcyan;
+        #Result,#image_gallery {
+            font-size: 7vh;
             text-align: center;
-            bottom: 0;
-            width: 100%;
-            padding-top: 1%;            
+            font-family: cursive;
+            margin-top: 4%;
+        }
+
+        #Image {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .col-3 {
+            font-weight: bold;
+        }
+
+        #add_Array {
+            margin-top: 4%;
+        }
+
+        .navbar_styling {
+            background: darkcyan;
         }
 
         .navbar-toggler-icon {
@@ -41,16 +58,17 @@
         .navbar-toggler {
             border-color: black;
         }
+        #Image_Gallery{
+            width:40vw;
+            height:40vh;
+            border:10px solid white;
+        }   
 
-        .jumbotron {
-            margin-left: 10%;
-            margin-right: 10%;
-            margin-top: 5%;
-        }
+      
     </style>
 </head>
 
-<body>
+<body onload="moviesearch(event); addimagegallery(event)">
     <nav class="navbar navbar-expand-sm navbar_styling">
         <a class="navbar-brand" href="index.html">StreamTime</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
@@ -71,22 +89,17 @@
             </ul>
         </div>
     </nav>
-    <div class="jumbotron">
-        <h2>About</h2>
-        <p>Everytime we want to watch a movie or TV show we find it hard to get suitable streaming links.
-            This website was designed to make it easier for the users to find movie information and get the streaming
-            links.
-            Movie information displays the movie/tv show posters, information about the actors, directors, production,
-            writers, year, Box Office Collection, Plot, Genre,Ratings and Runtime.
-            Clicking on streaming links displays the links of websites when the user can watch the movie/ tv show.
-            When we search using the title it executes a like condition on the search elements and returns everything
-            that
-            macthes.
-            If you have any queries go to our contact page and submit the contact form and we will get back to you.</p>
+    <div id="Result">
     </div>
-    <footer>
-        <p>&#9400; 2019. All rights reserved</p>
-    </footer>
+    <div id="add_Array">
+    </div>
+    <div id="image_gallery">
+    </div>
+    <div id="image_gallery_results">
+    </div>
+
+
+    <script src="app.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
