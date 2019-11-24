@@ -418,8 +418,20 @@ function addimagegallery(event) {
     event.preventDefault();
     var url_string = window.location.href;
     var url = new URL(url_string);
-    var data = url.searchParams.get("name");
-    fetch("https://www.googleapis.com/customsearch/v1?q=" + data + "&cx=007406524667026610117:ibv07ximgpk&key=AIzaSyDE0Xp8V6sMIFOSYyd4sGjNm-xlFL7gENQ&searchType=image", {
+    var name = url.searchParams.get("name");
+    fetch("https://movie-database-imdb-alternative.p.rapidapi.com/?page=1&r=json&s=" + name, {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com",
+            "x-rapidapi-key": "2184709211msh9241b36898ea929p185b66jsnd7cb1acad731"
+        }
+    })
+        .then(response =>
+            response.json()
+        )
+        .then(data => {
+            if (data.Response == "True") {
+    fetch("https://www.googleapis.com/customsearch/v1?q=" + name + "&searchType=image", {
         "method": "GET"
     })
         .then(response =>
@@ -551,4 +563,9 @@ function addimagegallery(event) {
             divelement.appendChild(cgrid);
 
         })
+}else{
+    document.getElementById('image_gallery').innerHTML = "";    
+
 }
+        })
+        }
