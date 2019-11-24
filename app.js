@@ -326,3 +326,88 @@ function moviesearch(event) {
         );
 
 }
+
+function findStramingLocation(event)
+{
+    event.preventDefault();
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    var data = url.searchParams.get("data");
+    URL="https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term="+data+"&country=us";
+    fetch(URL, {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com",
+		"x-rapidapi-key": "2184709211msh9241b36898ea929p185b66jsnd7cb1acad731"
+	}
+    })
+    .then(response => 
+         response.json()
+    )
+    .then(data=>
+        {
+            for(i in data.results)
+            {       
+                var divelement=document.getElementById('add_Array');
+                var rgrid=document.createElement('div');
+                rgrid.className='row';
+
+                var ccontent=document.createElement('div');
+                ccontent.className='col';
+
+                var col=document.createElement('div');
+                col.className='col';
+                var cpic=document.createElement('img')
+
+                var name=document.createElement('div');
+                name.className='row';
+                var namecontent=document.createElement('div');
+                namecontent.className='col';
+                namecontent.innerHTML=data.results[i].name;
+                name.appendChild(namecontent);
+                ccontent.appendChild(name);
+                
+                if(data.results[i].picture!="N/A")
+                {
+                    cpic.src=data.results[i].picture;
+                    cpic.alt=' Poster';
+                     cpic.height="200";
+                     cpic.width="200";
+                    col.appendChild(cpic);
+                    rgrid.appendChild(col);
+                    ccontent.appendChild(rgrid);
+                }
+        
+                for(j in data.results[i].locations)
+                {
+                    var ctitle=document.createElement('div');
+                    ctitle.className='col';
+
+                    var aelem=document.createElement('a');
+                    aelem.href= data.results[i].locations[j].url;  
+                    aelem.appendChild(ctitle); 
+                    aelem.innerHTML=data.results[i].locations[j].display_name;  
+                    
+                    ctitle.append(aelem);
+                    var rtitle=document.createElement('div');
+                    rtitle.className='row';
+                    
+                    ccontent.appendChild(rtitle);
+                    rtitle.append(ctitle);
+                    divelement.appendChild(ccontent); 
+                }
+                console.log(divelement);
+            }
+        })   
+    .catch(err => {
+        console.log(err);
+    });
+}
+
+function getstreaminglinks(event)
+{
+    event.preventDefault();
+    var data = document.getElementById("data").value;
+    data = data.replace(" ", "+");
+    window.open("streamingloc.html?data="+data); 
+}
