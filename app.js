@@ -569,3 +569,39 @@ function addimagegallery(event) {
 }
         })
         }
+
+function PopularMovies(event)
+{
+    event.preventDefault();
+    fetch("https://api.themoviedb.org/3/movie/popular?page=1&language=en-US&api_key=0425b9ec52c1ac4b75c12ca3da201132", {
+        "method": "GET",
+        "headers": {}
+    })
+    .then(response => 
+        response.json()
+   )
+   .then(data=>
+       {
+        for(let i=0;i<data.results.length;i++)
+        {   
+            if(i<6)
+            {
+                var poster="https://image.tmdb.org/t/p/w500"+data.results[i].poster_path;
+
+                var divelement=document.getElementById('popularmovies');
+    
+                var ccontent=document.createElement('div');
+                ccontent.className='col-2';
+                ccontent.id='col-size';
+                var cpic=document.createElement('img')
+                cpic.id = 'dimension';
+                cpic.src = poster;
+                ccontent.appendChild(cpic);
+                divelement.appendChild(ccontent); 
+            }
+        }
+       })
+    .catch(err => {
+        console.log(err);
+    });
+}
