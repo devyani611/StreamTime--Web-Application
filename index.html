@@ -24,7 +24,7 @@
 
         .container {
             padding: 1%;
-            margin-bottom: 2%;
+            /* margin-bottom: 1%; */
         }       
 
         .navbar_styling {
@@ -55,7 +55,7 @@
             width: 5vw;
             height: 5vh;
             padding: 1%;
-            margin-bottom: 6%;
+            margin-bottom: 3%;
             text-align: center;
         }
 
@@ -63,10 +63,25 @@
             width: 5vw;
             height: 5vh;
         }
+
+        #dimension {
+            width: 11vw;
+            height: 25vh;
+        }
+
+        #col-size
+        {
+            width: 11vw;
+            height: 25vh;
+            padding: 1%;
+            margin-bottom: 3%;
+            text-align: center;
+        }
+
     </style>
 </head>
 
-<body>
+<body onload="PopularMovies(event)">
     <nav class="navbar navbar-expand-sm navbar_styling">
         <a class="navbar-brand" href="index.html">StreamTime</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
@@ -128,8 +143,16 @@
             </div>
         </div>
     </div>
-   
+    <div class="container">
+        <div class="row" style="font-size: 4vh;font-family: cursive;margin-bottom: 1mm">
+            <div class="col">
+                Popular Movies...
+            </div>
+        </div>
+        <div class="row" id="popularmovies">
 
+        </div>
+    </div>
 
     <script src="app.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
