@@ -345,7 +345,13 @@ function findStramingLocation(event) {
             response.json()
         )
         .then(data => {
-            if (data.Response == "True") {
+
+            if (data.results.length === 0) {
+                document.getElementById('Result').innerHTML = "Sorry, Movie not found !";
+            }
+
+            else
+            {
                 for (i in data.results) {
                     var divelement = document.getElementById('add_Array');
                     var rgrid = document.createElement('div');
@@ -393,11 +399,8 @@ function findStramingLocation(event) {
                         rtitle.append(ctitle);
                         divelement.appendChild(ccontent);
                     }
-    
-                }
             }
-            else {
-                document.getElementById('Result').innerHTML = "Sorry, Movie not found !";
+            
             }
 
         })
