@@ -345,55 +345,61 @@ function findStramingLocation(event) {
             response.json()
         )
         .then(data => {
-            for (i in data.results) {
-                var divelement = document.getElementById('add_Array');
-                var rgrid = document.createElement('div');
-                rgrid.className = 'row';
-
-                var ccontent = document.createElement('div');
-                ccontent.className = 'col';
-
-                var col = document.createElement('div');
-                col.className = 'col';
-                var cpic = document.createElement('img')
-
-                var name = document.createElement('div');
-                name.className = 'row';
-                var namecontent = document.createElement('div');
-                namecontent.className = 'col';
-                namecontent.innerHTML = data.results[i].name;
-                name.appendChild(namecontent);
-                ccontent.appendChild(name);
-
-                if (data.results[i].picture != "N/A") {
-                    cpic.src = data.results[i].picture;
-                    cpic.alt = ' Poster';
-                    cpic.height = "200";
-                    cpic.width = "200";
-                    col.appendChild(cpic);
-                    rgrid.appendChild(col);
-                    ccontent.appendChild(rgrid);
+            if (data.Response == "True") {
+                for (i in data.results) {
+                    var divelement = document.getElementById('add_Array');
+                    var rgrid = document.createElement('div');
+                    rgrid.className = 'row';
+    
+                    var ccontent = document.createElement('div');
+                    ccontent.className = 'col';
+    
+                    var col = document.createElement('div');
+                    col.className = 'col';
+                    var cpic = document.createElement('img')
+    
+                    var name = document.createElement('div');
+                    name.className = 'row';
+                    var namecontent = document.createElement('div');
+                    namecontent.className = 'col';
+                    namecontent.innerHTML = data.results[i].name;
+                    name.appendChild(namecontent);
+                    ccontent.appendChild(name);
+    
+                    if (data.results[i].picture != "N/A") {
+                        cpic.src = data.results[i].picture;
+                        cpic.alt = ' Poster';
+                        cpic.height = "200";
+                        cpic.width = "200";
+                        col.appendChild(cpic);
+                        rgrid.appendChild(col);
+                        ccontent.appendChild(rgrid);
+                    }
+    
+                    for (j in data.results[i].locations) {
+                        var ctitle = document.createElement('div');
+                        ctitle.className = 'col';
+    
+                        var aelem = document.createElement('a');
+                        aelem.href = data.results[i].locations[j].url;
+                        aelem.appendChild(ctitle);
+                        aelem.innerHTML = data.results[i].locations[j].display_name;
+    
+                        ctitle.append(aelem);
+                        var rtitle = document.createElement('div');
+                        rtitle.className = 'row';
+    
+                        ccontent.appendChild(rtitle);
+                        rtitle.append(ctitle);
+                        divelement.appendChild(ccontent);
+                    }
+    
                 }
-
-                for (j in data.results[i].locations) {
-                    var ctitle = document.createElement('div');
-                    ctitle.className = 'col';
-
-                    var aelem = document.createElement('a');
-                    aelem.href = data.results[i].locations[j].url;
-                    aelem.appendChild(ctitle);
-                    aelem.innerHTML = data.results[i].locations[j].display_name;
-
-                    ctitle.append(aelem);
-                    var rtitle = document.createElement('div');
-                    rtitle.className = 'row';
-
-                    ccontent.appendChild(rtitle);
-                    rtitle.append(ctitle);
-                    divelement.appendChild(ccontent);
-                }
-
             }
+            else {
+                document.getElementById('Result').innerHTML = "Sorry, Movie not found !";
+            }
+
         })
         .catch(err => {
             console.log(err);
