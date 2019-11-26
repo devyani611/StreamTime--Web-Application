@@ -375,8 +375,7 @@ function findStramingLocation(event) {
                     if (data.results[i].picture != "N/A") {
                         cpic.src = data.results[i].picture;
                         cpic.alt = ' Poster';
-                        cpic.height = "200";
-                        cpic.width = "200";
+                        cpic.id = 'dimension';
                         col.appendChild(cpic);
                         rgrid.appendChild(col);
                         ccontent.appendChild(rgrid);
@@ -400,7 +399,7 @@ function findStramingLocation(event) {
                         divelement.appendChild(ccontent);
                     }
             }
-            
+
             }
 
         })
