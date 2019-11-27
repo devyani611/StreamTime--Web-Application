@@ -372,11 +372,23 @@ function findStramingLocation(event) {
                     name.appendChild(namecontent);
                     ccontent.appendChild(name);
     
-                    if (data.results[i].picture != "N/A") {
+                    if (data.results[i].picture != null) {
                         cpic.src = data.results[i].picture;
                         cpic.alt = ' Poster';
                         cpic.id = 'dimension';
                         col.appendChild(cpic);
+                        rgrid.appendChild(col);
+                        ccontent.appendChild(rgrid);
+                    }
+                    else
+                    {
+                        var posterdiv = document.createElement('div');
+                        posterdiv.id = 'poster';
+                        var text = document.createElement('p');
+                        text.id = 'postertext';
+                        text.innerHTML = "Poster Not Found";
+                        posterdiv.appendChild(text);
+                        col.appendChild(posterdiv);
                         rgrid.appendChild(col);
                         ccontent.appendChild(rgrid);
                     }
