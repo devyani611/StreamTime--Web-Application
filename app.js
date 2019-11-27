@@ -354,53 +354,74 @@ function findStramingLocation(event) {
             {
                 for (i in data.results) {
                     var divelement = document.getElementById('add_Array');
-                    var rgrid = document.createElement('div');
-                    rgrid.className = 'row';
-    
-                    var ccontent = document.createElement('div');
-                    ccontent.className = 'col';
-    
-                    var col = document.createElement('div');
-                    col.className = 'col';
-                    var cpic = document.createElement('img')
-    
-                    var name = document.createElement('div');
-                    name.className = 'row';
-                    var namecontent = document.createElement('div');
-                    namecontent.className = 'col';
-                    namecontent.innerHTML = data.results[i].name;
-                    name.appendChild(namecontent);
-                    ccontent.appendChild(name);
-    
-                    if (data.results[i].picture != null) {
-                        cpic.src = data.results[i].picture;
-                        cpic.alt = ' Poster';
-                        cpic.id = 'dimension';
-                        col.appendChild(cpic);
-                        rgrid.appendChild(col);
-                        ccontent.appendChild(rgrid);
-                    }
-                    else
+                    var DistinctLocation = []; 
+                    var count = 0; 
+                    var start = false; 
+                    for (j in data.results[i].locations)
                     {
-                        var posterdiv = document.createElement('div');
-                        posterdiv.id = 'poster';
-                        var text = document.createElement('p');
-                        text.id = 'postertext';
-                        text.innerHTML = "Poster Not Found";
-                        posterdiv.appendChild(text);
-                        col.appendChild(posterdiv);
-                        rgrid.appendChild(col);
-                        ccontent.appendChild(rgrid);
+                        for (k = 0; k < DistinctLocation.length; k++) { 
+                            if ( data.results[i].locations[j].display_name == DistinctLocation[k].display_name
+                                && data.results[i].locations[j].url == DistinctLocation[k].url
+                                ) { 
+                                start = true; 
+                            } 
+                        } 
+                        count++; 
+                        if (count == 1 && start == false) { 
+                            DistinctLocation.push(data.results[i].locations[j]); 
+                        } 
+                        start = false; 
+                        count = 0; 
                     }
-    
-                    for (j in data.results[i].locations) {
+                     
+                    for (j in DistinctLocation) {
+                        var rgrid = document.createElement('div');
+                        rgrid.className = 'row';
+        
+                        var ccontent = document.createElement('div');
+                        ccontent.className = 'col';
+        
+                        var col = document.createElement('div');
+                        col.className = 'col';
+                        var cpic = document.createElement('img')
+        
+                        var name = document.createElement('div');
+                        name.className = 'row';
+                        var namecontent = document.createElement('div');
+                        namecontent.className = 'col';
+                        namecontent.innerHTML = data.results[i].name;
+                        name.appendChild(namecontent);
+                        ccontent.appendChild(name);
+        
+                        if (data.results[i].picture != null) {
+                            cpic.src = data.results[i].picture;
+                            cpic.alt = ' Poster';
+                            cpic.id = 'dimension';
+                            col.appendChild(cpic);
+                            rgrid.appendChild(col);
+                            ccontent.appendChild(rgrid);
+                        }
+
+                        else
+                        {
+                            var posterdiv = document.createElement('div');
+                            posterdiv.id = 'poster';
+                            var text = document.createElement('p');
+                            text.id = 'postertext';
+                            text.innerHTML = "Poster Not Found";
+                            posterdiv.appendChild(text);
+                            col.appendChild(posterdiv);
+                            rgrid.appendChild(col);
+                            ccontent.appendChild(rgrid);
+                        }
+
                         var ctitle = document.createElement('div');
                         ctitle.className = 'col';
     
                         var aelem = document.createElement('a');
-                        aelem.href = data.results[i].locations[j].url;
+                        aelem.href = DistinctLocation[j].url;
                         aelem.appendChild(ctitle);
-                        aelem.innerHTML = data.results[i].locations[j].display_name;
+                        aelem.innerHTML = DistinctLocation[j].display_name;
     
                         ctitle.append(aelem);
                         var rtitle = document.createElement('div');
@@ -410,7 +431,8 @@ function findStramingLocation(event) {
                         rtitle.append(ctitle);
                         divelement.appendChild(ccontent);
                     }
-            }
+
+                }
 
             }
 
