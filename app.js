@@ -39,7 +39,8 @@ function moviesearch(event) {
                             /**Creating a Bootstrap grid row for Image */
                             var rgrid = document.createElement('div');
                             rgrid.className = 'row';
-                            rgrid.style.marginBottom = "5%";
+                            rgrid.id="PosterStyle";
+
                             /**Image element */
                             var cpic = document.createElement('img')
                             if (response.Poster != "N/A") {
@@ -60,20 +61,48 @@ function moviesearch(event) {
                             }
                             /**Creating Bootstrap grid ROW for TITLE */
                             var rrgrid = document.createElement('div');
-                            rrgrid.className = 'row';
-
-                            /**Creating Bootstrap grid  COL for TITLE */
-                            var ctitle = document.createElement('div');
-                            ctitle.className = 'col-3';
-                            ctitle.innerHTML = "Title :";
+                            rrgrid.className = 'row';                           
 
                             /**Creating Bootstrap grid  COL for TITLE  VALUE*/
                             var ccontent = document.createElement('div');
                             ccontent.className = 'col';
                             ccontent.innerHTML = response.Title;
+                            ccontent.id='Title';
                             /**Appending Title and Title Valur col to row and appending row to container */
-                            rrgrid.appendChild(ctitle);
                             rrgrid.appendChild(ccontent);
+                            cgrid.appendChild(rrgrid);
+                            divelement.appendChild(cgrid);      
+                            
+                            var rrgrid = document.createElement('div');
+                            rrgrid.className = 'row';
+
+                            
+                            
+
+                            var rrgrid = document.createElement('div');
+                            rrgrid.className = 'row';
+
+                            var rrgrid2 = document.createElement('div');
+                            rrgrid2.className = 'row';
+
+                            var ratings=document.createElement('div');
+                            ratings.className='col';
+                            ratings.style.textAlign='center';
+                            ratings.innerHTML='Ratings';
+                            ratings.id="Rating";
+                            rrgrid2.appendChild(ratings);
+                            cgrid.appendChild(rrgrid2);
+
+
+                            for(j in response.Ratings){
+                                var ctitle = document.createElement('div');
+                                ctitle.className = 'col-4';
+                                ctitle.style.textAlign = 'center';
+                                ctitle.innerHTML=response.Ratings[j].Value+" on "+response.Ratings[j].Source;
+                                rrgrid.append(ctitle); 
+                            }                  
+                           
+                          
                             cgrid.appendChild(rrgrid);
                             divelement.appendChild(cgrid);
 
@@ -90,32 +119,6 @@ function moviesearch(event) {
 
                             rrgrid.append(ctitle);
                             rrgrid.append(ccontent);
-                            cgrid.appendChild(rrgrid);
-                            divelement.appendChild(cgrid);
-
-                            var rrgrid = document.createElement('div');
-                            rrgrid.className = 'row';
-
-                            var rrgrid2 = document.createElement('div');
-                            rrgrid2.className = 'row';
-
-                            var ratings=document.createElement('div');
-                            ratings.className='col';
-                            ratings.style.textAlign='center';
-                            ratings.innerHTML='Ratings';
-                            rrgrid2.appendChild(ratings);
-                            cgrid.appendChild(rrgrid2);
-
-
-                            for(j in response.Ratings){
-                                var ctitle = document.createElement('div');
-                                ctitle.className = 'col-4';
-                                ctitle.style.textAlign = 'center';
-                                ctitle.innerHTML=response.Ratings[j].Value+" on "+response.Ratings[j].Source;
-                                rrgrid.append(ctitle); 
-                            }                  
-                           
-                          
                             cgrid.appendChild(rrgrid);
                             divelement.appendChild(cgrid);
 
