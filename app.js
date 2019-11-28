@@ -48,13 +48,13 @@ function moviesearch(event) {
                                 cpic.alt = response.Title + ' Poster';
                                 rgrid.appendChild(cpic);
                                 cgrid.appendChild(rgrid);
-                            }else{
+                            } else {
                                 var posterdiv = document.createElement('div');
                                 posterdiv.id = 'poster';
                                 var text = document.createElement('p');
                                 text.id = 'postertext';
                                 text.innerHTML = "Poster Not Found";
-                                posterdiv.appendChild(text);                               
+                                posterdiv.appendChild(text);
                                 rgrid.appendChild(posterdiv);
                                 cgrid.appendChild(rgrid);
                             }
@@ -90,6 +90,32 @@ function moviesearch(event) {
 
                             rrgrid.append(ctitle);
                             rrgrid.append(ccontent);
+                            cgrid.appendChild(rrgrid);
+                            divelement.appendChild(cgrid);
+
+                            var rrgrid = document.createElement('div');
+                            rrgrid.className = 'row';
+
+                            var rrgrid2 = document.createElement('div');
+                            rrgrid2.className = 'row';
+
+                            var ratings=document.createElement('div');
+                            ratings.className='col';
+                            ratings.style.textAlign='center';
+                            ratings.innerHTML='Ratings';
+                            rrgrid2.appendChild(ratings);
+                            cgrid.appendChild(rrgrid2);
+
+
+                            for(j in response.Ratings){
+                                var ctitle = document.createElement('div');
+                                ctitle.className = 'col-4';
+                                ctitle.style.textAlign = 'center';
+                                ctitle.innerHTML=response.Ratings[j].Value+" on "+response.Ratings[j].Source;
+                                rrgrid.append(ctitle); 
+                            }                  
+                           
+                          
                             cgrid.appendChild(rrgrid);
                             divelement.appendChild(cgrid);
 
@@ -305,23 +331,7 @@ function moviesearch(event) {
 
 
 
-                            for (j in response.Ratings) {
-                                var rrgrid = document.createElement('div');
-                                rrgrid.className = 'row';
 
-                                var ctitle = document.createElement('div');
-                                ctitle.className = 'col-3';
-                                ctitle.innerHTML = response.Ratings[j].Source + " Rating :";
-
-                                var ccontent = document.createElement('div');
-                                ccontent.className = 'col';
-                                ccontent.innerHTML = response.Ratings[j].Value;
-
-                                rrgrid.append(ctitle);
-                                rrgrid.append(ccontent);
-                                cgrid.appendChild(rrgrid);
-                                divelement.appendChild(cgrid);
-                            }
 
                         });
 
@@ -359,41 +369,39 @@ function findStramingLocation(event) {
                 document.getElementById('Result').innerHTML = "Sorry, Movie not found !";
             }
 
-            else
-            {
+            else {
                 for (i in data.results) {
                     var divelement = document.getElementById('add_Array');
-                    var DistinctLocation = []; 
-                    var count = 0; 
-                    var start = false; 
-                    for (j in data.results[i].locations)
-                    {
-                        for (k = 0; k < DistinctLocation.length; k++) { 
-                            if ( data.results[i].locations[j].display_name == DistinctLocation[k].display_name
+                    var DistinctLocation = [];
+                    var count = 0;
+                    var start = false;
+                    for (j in data.results[i].locations) {
+                        for (k = 0; k < DistinctLocation.length; k++) {
+                            if (data.results[i].locations[j].display_name == DistinctLocation[k].display_name
                                 && data.results[i].locations[j].url == DistinctLocation[k].url
-                                ) { 
-                                start = true; 
-                            } 
-                        } 
-                        count++; 
-                        if (count == 1 && start == false) { 
-                            DistinctLocation.push(data.results[i].locations[j]); 
-                        } 
-                        start = false; 
-                        count = 0; 
+                            ) {
+                                start = true;
+                            }
+                        }
+                        count++;
+                        if (count == 1 && start == false) {
+                            DistinctLocation.push(data.results[i].locations[j]);
+                        }
+                        start = false;
+                        count = 0;
                     }
-                     
+
                     for (j in DistinctLocation) {
                         var rgrid = document.createElement('div');
                         rgrid.className = 'row';
-        
+
                         var ccontent = document.createElement('div');
                         ccontent.className = 'col';
-        
+
                         var col = document.createElement('div');
                         col.className = 'col';
                         var cpic = document.createElement('img')
-        
+
                         var name = document.createElement('div');
                         name.className = 'row';
                         var namecontent = document.createElement('div');
@@ -401,7 +409,7 @@ function findStramingLocation(event) {
                         namecontent.innerHTML = data.results[i].name;
                         name.appendChild(namecontent);
                         ccontent.appendChild(name);
-        
+
                         if (data.results[i].picture != null) {
                             cpic.src = data.results[i].picture;
                             cpic.alt = ' Poster';
@@ -411,8 +419,7 @@ function findStramingLocation(event) {
                             ccontent.appendChild(rgrid);
                         }
 
-                        else
-                        {
+                        else {
                             var posterdiv = document.createElement('div');
                             posterdiv.id = 'poster';
                             var text = document.createElement('p');
@@ -426,16 +433,16 @@ function findStramingLocation(event) {
 
                         var ctitle = document.createElement('div');
                         ctitle.className = 'col';
-    
+
                         var aelem = document.createElement('a');
                         aelem.href = DistinctLocation[j].url;
                         aelem.appendChild(ctitle);
                         aelem.innerHTML = DistinctLocation[j].display_name;
-    
+
                         ctitle.append(aelem);
                         var rtitle = document.createElement('div');
                         rtitle.className = 'row';
-    
+
                         ccontent.appendChild(rtitle);
                         rtitle.append(ctitle);
                         divelement.appendChild(ccontent);
@@ -482,177 +489,173 @@ function addimagegallery(event) {
         )
         .then(data => {
             if (data.Response == "True") {
-    fetch("https://www.googleapis.com/customsearch/v1?q=" + name + "&searchType=image", {
-        "method": "GET"
-    })
-        .then(response =>
-            response.json()
-        ).then(data => {
-            document.getElementById('image_gallery').innerHTML = "Image Gallery";
-            var divelement = document.getElementById('image_gallery_results');
+                fetch("https://www.googleapis.com/customsearch/v1?q=" + name + "&searchType=image", {
+                    "method": "GET"
+                })
+                    .then(response =>
+                        response.json()
+                    ).then(data => {
+                        document.getElementById('image_gallery').innerHTML = "Image Gallery";
+                        var divelement = document.getElementById('image_gallery_results');
 
-            /**Creating a Bootstrap grid container */
-            var cgrid = document.createElement('div');
-            cgrid.className = 'container';
+                        /**Creating a Bootstrap grid container */
+                        var cgrid = document.createElement('div');
+                        cgrid.className = 'container';
 
-                var rgrid = document.createElement('div');
-                rgrid.className = 'row';
-                rgrid.style.marginBottom = "5%";
-                
-                var ccontent = document.createElement('div');
-                ccontent.className = 'col-6';
-                var cpic = document.createElement('img')
-                cpic.src = data.items[0].link;
-                cpic.id = "Image_Gallery";
-                cpic.alt = data + ' Poster';
-                ccontent.appendChild(cpic);
-                rgrid.appendChild(cpic);
-                var ccontent = document.createElement('div');
-                ccontent.className = 'col-6';
-                var cpic = document.createElement('img')
-                cpic.src = data.items[1].link;
-                cpic.id = "Image_Gallery";
-                cpic.alt = data + ' Poster';
-                ccontent.appendChild(cpic);
-                rgrid.appendChild(cpic);
-                cgrid.appendChild(rgrid);
+                        var rgrid = document.createElement('div');
+                        rgrid.className = 'row';
+                        rgrid.style.marginBottom = "5%";
+
+                        var ccontent = document.createElement('div');
+                        ccontent.className = 'col-6';
+                        var cpic = document.createElement('img')
+                        cpic.src = data.items[0].link;
+                        cpic.id = "Image_Gallery";
+                        cpic.alt = data + ' Poster';
+                        ccontent.appendChild(cpic);
+                        rgrid.appendChild(cpic);
+                        var ccontent = document.createElement('div');
+                        ccontent.className = 'col-6';
+                        var cpic = document.createElement('img')
+                        cpic.src = data.items[1].link;
+                        cpic.id = "Image_Gallery";
+                        cpic.alt = data + ' Poster';
+                        ccontent.appendChild(cpic);
+                        rgrid.appendChild(cpic);
+                        cgrid.appendChild(rgrid);
 
 
 
-                var rgrid = document.createElement('div');
-                rgrid.className = 'row';
-                rgrid.style.marginBottom = "5%";
-                
-                var ccontent = document.createElement('div');
-                ccontent.className = 'col-6';
-                var cpic = document.createElement('img')
-                cpic.src = data.items[2].link;
-                cpic.id = "Image_Gallery";
-                cpic.alt = data + ' Poster';
-                ccontent.appendChild(cpic);
-                rgrid.appendChild(cpic);
-                var ccontent = document.createElement('div');
-                ccontent.className = 'col-6';
-                var cpic = document.createElement('img')
-                cpic.src = data.items[3].link;
-                cpic.id = "Image_Gallery";
-                cpic.alt = data + ' Poster';
-                ccontent.appendChild(cpic);
-                rgrid.appendChild(cpic);               
-                cgrid.appendChild(rgrid);
+                        var rgrid = document.createElement('div');
+                        rgrid.className = 'row';
+                        rgrid.style.marginBottom = "5%";
 
-                
-                var rgrid = document.createElement('div');
-                rgrid.className = 'row';
-                rgrid.style.marginBottom = "5%";
-                
-                var ccontent = document.createElement('div');
-                ccontent.className = 'col-6';
-                var cpic = document.createElement('img')
-                cpic.src = data.items[4].link;
-                cpic.id = "Image_Gallery";
-                cpic.alt = data + ' Poster';
-                ccontent.appendChild(cpic);
-                rgrid.appendChild(cpic);
-                var ccontent = document.createElement('div');
-                ccontent.className = 'col-6';
-                var cpic = document.createElement('img')
-                cpic.src = data.items[5].link;
-                cpic.id = "Image_Gallery";
-                cpic.alt = data + ' Poster';
-                ccontent.appendChild(cpic);
-                rgrid.appendChild(cpic);               
-                cgrid.appendChild(rgrid);
+                        var ccontent = document.createElement('div');
+                        ccontent.className = 'col-6';
+                        var cpic = document.createElement('img')
+                        cpic.src = data.items[2].link;
+                        cpic.id = "Image_Gallery";
+                        cpic.alt = data + ' Poster';
+                        ccontent.appendChild(cpic);
+                        rgrid.appendChild(cpic);
+                        var ccontent = document.createElement('div');
+                        ccontent.className = 'col-6';
+                        var cpic = document.createElement('img')
+                        cpic.src = data.items[3].link;
+                        cpic.id = "Image_Gallery";
+                        cpic.alt = data + ' Poster';
+                        ccontent.appendChild(cpic);
+                        rgrid.appendChild(cpic);
+                        cgrid.appendChild(rgrid);
 
-                
-                var rgrid = document.createElement('div');
-                rgrid.className = 'row';
-                rgrid.style.marginBottom = "5%";
-                
-                var ccontent = document.createElement('div');
-                ccontent.className = 'col-6';
-                var cpic = document.createElement('img')
-                cpic.src = data.items[6].link;
-                cpic.id = "Image_Gallery";
-                cpic.alt = data + ' Poster';
-                ccontent.appendChild(cpic);
-                rgrid.appendChild(cpic);
-                var ccontent = document.createElement('div');
-                ccontent.className = 'col-6';
-                var cpic = document.createElement('img')
-                cpic.src = data.items[7].link;
-                cpic.id = "Image_Gallery";
-                cpic.alt = data + ' Poster';
-                ccontent.appendChild(cpic);
-                rgrid.appendChild(cpic);               
-                cgrid.appendChild(rgrid);
 
-                
-                var rgrid = document.createElement('div');
-                rgrid.className = 'row';
-                rgrid.style.marginBottom = "5%";
-                
-                var ccontent = document.createElement('div');
-                ccontent.className = 'col-6';
-                var cpic = document.createElement('img')
-                cpic.src = data.items[8].link;
-                cpic.id = "Image_Gallery";
-                cpic.alt = data + ' Poster';
-                ccontent.appendChild(cpic);
-                rgrid.appendChild(cpic);
-                var ccontent = document.createElement('div');
-                ccontent.className = 'col-6';
-                var cpic = document.createElement('img')
-                cpic.src = data.items[9].link;
-                cpic.id = "Image_Gallery";
-                cpic.alt = data + ' Poster';
-                ccontent.appendChild(cpic);
-                rgrid.appendChild(cpic);               
-                cgrid.appendChild(rgrid); 
-               
-        
-            divelement.appendChild(cgrid);
+                        var rgrid = document.createElement('div');
+                        rgrid.className = 'row';
+                        rgrid.style.marginBottom = "5%";
 
+                        var ccontent = document.createElement('div');
+                        ccontent.className = 'col-6';
+                        var cpic = document.createElement('img')
+                        cpic.src = data.items[4].link;
+                        cpic.id = "Image_Gallery";
+                        cpic.alt = data + ' Poster';
+                        ccontent.appendChild(cpic);
+                        rgrid.appendChild(cpic);
+                        var ccontent = document.createElement('div');
+                        ccontent.className = 'col-6';
+                        var cpic = document.createElement('img')
+                        cpic.src = data.items[5].link;
+                        cpic.id = "Image_Gallery";
+                        cpic.alt = data + ' Poster';
+                        ccontent.appendChild(cpic);
+                        rgrid.appendChild(cpic);
+                        cgrid.appendChild(rgrid);
+
+
+                        var rgrid = document.createElement('div');
+                        rgrid.className = 'row';
+                        rgrid.style.marginBottom = "5%";
+
+                        var ccontent = document.createElement('div');
+                        ccontent.className = 'col-6';
+                        var cpic = document.createElement('img')
+                        cpic.src = data.items[6].link;
+                        cpic.id = "Image_Gallery";
+                        cpic.alt = data + ' Poster';
+                        ccontent.appendChild(cpic);
+                        rgrid.appendChild(cpic);
+                        var ccontent = document.createElement('div');
+                        ccontent.className = 'col-6';
+                        var cpic = document.createElement('img')
+                        cpic.src = data.items[7].link;
+                        cpic.id = "Image_Gallery";
+                        cpic.alt = data + ' Poster';
+                        ccontent.appendChild(cpic);
+                        rgrid.appendChild(cpic);
+                        cgrid.appendChild(rgrid);
+
+
+                        var rgrid = document.createElement('div');
+                        rgrid.className = 'row';
+                        rgrid.style.marginBottom = "5%";
+
+                        var ccontent = document.createElement('div');
+                        ccontent.className = 'col-6';
+                        var cpic = document.createElement('img')
+                        cpic.src = data.items[8].link;
+                        cpic.id = "Image_Gallery";
+                        cpic.alt = data + ' Poster';
+                        ccontent.appendChild(cpic);
+                        rgrid.appendChild(cpic);
+                        var ccontent = document.createElement('div');
+                        ccontent.className = 'col-6';
+                        var cpic = document.createElement('img')
+                        cpic.src = data.items[9].link;
+                        cpic.id = "Image_Gallery";
+                        cpic.alt = data + ' Poster';
+                        ccontent.appendChild(cpic);
+                        rgrid.appendChild(cpic);
+                        cgrid.appendChild(rgrid);
+
+
+                        divelement.appendChild(cgrid);
+
+                    })
+            } else {
+                document.getElementById('image_gallery').innerHTML = "";
+
+            }
         })
-}else{
-    document.getElementById('image_gallery').innerHTML = "";    
-
 }
-        })
-        }
 
-function PopularMovies(event)
-{
+function PopularMovies(event) {
     event.preventDefault();
     fetch("https://api.themoviedb.org/3/movie/popular?page=1&language=en-US&api_key=0425b9ec52c1ac4b75c12ca3da201132", {
         "method": "GET",
         "headers": {}
     })
-    .then(response => 
-        response.json()
-   )
-   .then(data=>
-       {
-        for(let i=0;i<data.results.length;i++)
-        {   
-            if(i<6)
-            {
-                var poster="https://image.tmdb.org/t/p/w500"+data.results[i].poster_path;
+        .then(response =>
+            response.json()
+        )
+        .then(data => {
+            for (let i = 0; i < data.results.length; i++) {
+                if (i < 12) {
+                    var poster = "https://image.tmdb.org/t/p/w500" + data.results[i].poster_path;
 
-                var divelement=document.getElementById('popularmovies');
-    
-                var ccontent=document.createElement('div');
-                ccontent.className='col-2';
-                ccontent.id='col-size';
-                var cpic=document.createElement('img')
-                cpic.id = 'dimension';
-                cpic.src = poster;
-                ccontent.appendChild(cpic);
-                divelement.appendChild(ccontent); 
+                    var divelement = document.getElementById('popularmovies');
+
+                    var ccontent = document.createElement('div');
+                    ccontent.className = 'col-2';
+                    ccontent.id = 'col-size';
+                    var cpic = document.createElement('img')
+                    cpic.id = 'dimension';
+                    cpic.src = poster;
+                    ccontent.appendChild(cpic);
+                    divelement.appendChild(ccontent);
+                }
             }
-        }
-       })
-    .catch(err => {
-        console.log(err);
-    });
+        })
+        .catch(err => {
+            console.log(err);
+        });
 }
