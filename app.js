@@ -34,7 +34,6 @@ function moviesearch(event) {
                             var cgrid = document.createElement('div');
                             cgrid.className = 'container';
                             cgrid.id = imdbid;
-                            cgrid.style.border = "1px solid black";
 
                             /**Creating a Bootstrap grid row for Image */
                             var rgrid = document.createElement('div');
@@ -74,16 +73,15 @@ function moviesearch(event) {
                             divelement.appendChild(cgrid);      
                             
                             var rrgrid = document.createElement('div');
-                            rrgrid.className = 'row';
-
+                            rrgrid.className = 'row';           
                             
-                            
-
                             var rrgrid = document.createElement('div');
                             rrgrid.className = 'row';
+                            rrgrid.id="Ratingsection"
 
                             var rrgrid2 = document.createElement('div');
                             rrgrid2.className = 'row';
+                           
 
                             var ratings=document.createElement('div');
                             ratings.className='col';
