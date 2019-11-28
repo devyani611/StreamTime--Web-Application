@@ -48,6 +48,15 @@ function moviesearch(event) {
                                 cpic.alt = response.Title + ' Poster';
                                 rgrid.appendChild(cpic);
                                 cgrid.appendChild(rgrid);
+                            }else{
+                                var posterdiv = document.createElement('div');
+                                posterdiv.id = 'poster';
+                                var text = document.createElement('p');
+                                text.id = 'postertext';
+                                text.innerHTML = "Poster Not Found";
+                                posterdiv.appendChild(text);                               
+                                rgrid.appendChild(posterdiv);
+                                cgrid.appendChild(rgrid);
                             }
                             /**Creating Bootstrap grid ROW for TITLE */
                             var rrgrid = document.createElement('div');
