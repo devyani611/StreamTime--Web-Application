@@ -10,30 +10,22 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
-        .container {
-            padding: 1%;
-            margin-bottom: 2%;
-        }
-
-        #Result,#image_gallery {
-            font-size: 7vh;
-            text-align: center;
-            font-family: cursive;
-            margin-top: 4%;
-        }
-
-        #Image {
+        .col-8 {
             margin-left: auto;
             margin-right: auto;
         }
 
-        .col-3 {
-            font-weight: bold;
+        .heading,
+        h3 {
+            font-size: 5vh;
+            padding: 1cm;
+            font-family: cursive;
         }
 
-        #add_Array {
-            margin-top: 4%;
-        }
+        .container {
+            padding: 1%;
+            /* margin-bottom: 1%; */
+        }       
 
         .navbar_styling {
             background: darkcyan;
@@ -58,39 +50,38 @@
         .navbar-toggler {
             border-color: black;
         }
-        #Image_Gallery{
-            width:40vw;
-            height:40vh;
-            border:10px solid white;
-        }   
 
-        #poster
-        {
-            width: 16vw;
-            height: 32vh;
-            border: solid black;
-            color: black;
-            background-color: lightgray;
-            font-weight: 500;
-            font-size: 20px;
-            margin-left:auto;
-            margin-right: auto;
-        }
-
-        #postertext
-        {
-            margin-left:auto;
-            margin-right: auto; 
+        .col-2 {
+            width: 5vw;
+            height: 5vh;
+            padding: 1%;
+            margin-bottom: 3%;
             text-align: center;
-            margin-top:45%;
         }
-         
 
-      
+        #image_dimension {
+            width: 5vw;
+            height: 5vh;
+        }
+
+        #dimension {
+            width: 11vw;
+            height: 25vh;
+        }
+
+        #col-size
+        {
+            width: 11vw;
+            height: 25vh;
+            padding: 1%;
+            margin-bottom: 3%;
+            text-align: center;
+        }
+
     </style>
 </head>
 
-<body onload="moviesearch(event); addimagegallery(event)">
+<body onload="PopularMovies(event)">
     <nav class="navbar navbar-expand-sm navbar_styling">
         <a class="navbar-brand" href="index.html">StreamTime</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
@@ -99,7 +90,7 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto content_styling">
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="movieSearch.html">Home</a>
                 </li>
                 <li class="nav-item">
@@ -111,18 +102,61 @@
                 <li class="nav-item">
                     <a class="nav-link" href="contact.html">Contact</a>
                 </li>
+                
             </ul>
         </div>
     </nav>
-    <div id="Result">
-    </div>
-    <div id="add_Array">
-    </div>
-    <div id="image_gallery">
-    </div>
-    <div id="image_gallery_results">
-    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+                <form class="text-center mx-auto" style="width: 100%;">
+                    <div class="col-8 heading">
+                        Search for your favourite movie and TV shows
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="data" id="data">
+                    </div>
 
+                    <button type="Submit" class="btn btn-primary" onclick="movieDetailSearch(event)">Get Movie
+                        Info</button>
+
+                    <button type="Submit" class="btn btn-primary" onclick="getstreaminglinks(event)">Get Streaming Links</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <img src="netflix.png" alt="Netflix Logo" id="image_dimension">
+            </div>
+            <div class="col-2">
+                <img src="prime.png" alt="Prime Logo" id="image_dimension">
+            </div>
+            <div class="col-2">
+                <img src="hulu.png" alt="Hulu Logo" id="image_dimension">
+            </div>
+            <div class="col-2">
+                <img src="sling.png" alt="Sling Logo" id="image_dimension">
+            </div>
+            <div class="col-2">
+                <img src="youtube.png" alt="Youtube Logo" id="image_dimension">
+            </div>
+            <div class="col-2">
+                <img src="hbo.png" alt="HBO Logo" id="image_dimension">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" style="font-size: 4vh;font-family: cursive;margin-bottom: 1mm">
+            <div class="col">
+                Popular Movies...
+            </div>
+        </div>
+        <div class="row" id="popularmovies">
+
+        </div>
+    </div>
 
     <script src="app.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

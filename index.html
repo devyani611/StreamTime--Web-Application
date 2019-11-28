@@ -1,173 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
+<style>
+.container {
+  position: relative;
+  width: 100%;
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 
-    <title>MovieSearch</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <style>
-        .col-8 {
-            margin-left: auto;
-            margin-right: auto;
-        }
+.overlay {
+  position: absolute;
+  bottom: 100%;
+  left: 0%;
+  right: 0%;
+  background-image: url(curtain.jpg);
+  background-size: 100% 100%;
+  overflow: hidden;
+  width: 100%;
+  height:0;
+  transition: 5s ease;
+}
 
-        .heading,
-        h3 {
-            font-size: 5vh;
-            padding: 1cm;
-            font-family: cursive;
-        }
+.container:hover .overlay {
+  bottom: 0;
+  height: 100%;
+}
 
-        .container {
-            padding: 1%;
-            /* margin-bottom: 1%; */
-        }       
+.text {
+  white-space: nowrap; 
+  color: black;
+  font-size: 20px;
+  position: absolute;
+  overflow: hidden;
+  font-size: 30px;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: 'cursive';
+  font-weight: bold;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid black;
+  padding: 10px;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transition: 0.3s;
+  text-shadow: 1px 1px 0 black, 1px 2px 0 black, 1px 3px 0 black, 1px 4px 0 black,
+    ;
+}
+.text:hover {
+  transition: 0.3s;
+  transform: scale(1.1)translate(-50%, -50%);
+  text-shadow: 1px -1px 0 black, 1px -2px 0 black, 1px -3px 0 black,
+   
+    1px -8px 0 black, 5px -13px 15px black,;
+}
 
-        .navbar_styling {
-            background: darkcyan;
-        }
-
-        .navbar-toggler-icon {
-            background: black;
-        }
-
-        .navbar-collapse .navbar-nav .nav-item .nav-link {
-            color: black;
-        }
-
-        .navbar-brand {
-            color: black;
-        }
-
-        .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-        }
-
-        .navbar-toggler {
-            border-color: black;
-        }
-
-        .col-2 {
-            width: 5vw;
-            height: 5vh;
-            padding: 1%;
-            margin-bottom: 3%;
-            text-align: center;
-        }
-
-        #image_dimension {
-            width: 5vw;
-            height: 5vh;
-        }
-
-        #dimension {
-            width: 11vw;
-            height: 25vh;
-        }
-
-        #col-size
-        {
-            width: 11vw;
-            height: 25vh;
-            padding: 1%;
-            margin-bottom: 3%;
-            text-align: center;
-        }
-
-    </style>
+</style>
 </head>
+<body>
 
-<body onload="PopularMovies(event)">
-    <nav class="navbar navbar-expand-sm navbar_styling">
-        <a class="navbar-brand" href="index.html">StreamTime</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto content_styling">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="about.html">About</a>
-                </li>
-                <li class="nav-item">
-                        <a class="nav-link" href="latest.html">Latest</a>
-                    </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
-                </li>
-                
-            </ul>
-        </div>
-    </nav>
-    <div class="container">
-        <div class="row">
-            <div class="col-8">
-                <form class="text-center mx-auto" style="width: 100%;">
-                    <div class="col-8 heading">
-                        Search for your favourite movie and TV shows
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="data" id="data">
-                    </div>
-
-                    <button type="Submit" class="btn btn-primary" onclick="movieDetailSearch(event)">Get Movie
-                        Info</button>
-
-                    <button type="Submit" class="btn btn-primary" onclick="getstreaminglinks(event)">Get Streaming Links</button>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-2">
-                <img src="netflix.png" alt="Netflix Logo" id="image_dimension">
-            </div>
-            <div class="col-2">
-                <img src="prime.png" alt="Prime Logo" id="image_dimension">
-            </div>
-            <div class="col-2">
-                <img src="hulu.png" alt="Hulu Logo" id="image_dimension">
-            </div>
-            <div class="col-2">
-                <img src="sling.png" alt="Sling Logo" id="image_dimension">
-            </div>
-            <div class="col-2">
-                <img src="youtube.png" alt="Youtube Logo" id="image_dimension">
-            </div>
-            <div class="col-2">
-                <img src="hbo.png" alt="HBO Logo" id="image_dimension">
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row" style="font-size: 4vh;font-family: cursive;margin-bottom: 1mm">
-            <div class="col">
-                Popular Movies...
-            </div>
-        </div>
-        <div class="row" id="popularmovies">
-
-        </div>
-    </div>
-
-    <script src="app.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+<div class="container">
+  <img src="bgimage.jpg" alt="Avatar" class="image">
+  <div class="overlay">
+  <a href= "movieSearch.html" class="text"> Stream Time</a>
+  </div>
+</div>
+ 
 </body>
-
-</html>
