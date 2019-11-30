@@ -380,7 +380,8 @@ function findStramingLocation(event) {
                         for (k = 0; k < DistinctLocation.length; k++) {
                             if (data.results[i].locations[j].display_name == DistinctLocation[k].display_name
                                 && data.results[i].locations[j].url == DistinctLocation[k].url
-                            ) {
+                            ) 
+                            {
                                 start = true;
                             }
                         }
@@ -403,14 +404,6 @@ function findStramingLocation(event) {
                         col.className = 'col';
                         var cpic = document.createElement('img')
 
-                        var name = document.createElement('div');
-                        name.className = 'row';
-                        var namecontent = document.createElement('div');
-                        namecontent.className = 'col';
-                        namecontent.innerHTML = data.results[i].name;
-                        name.appendChild(namecontent);
-                        ccontent.appendChild(name);
-
                         if (data.results[i].picture != null) {
                             cpic.src = data.results[i].picture;
                             cpic.alt = ' Poster';
@@ -431,6 +424,14 @@ function findStramingLocation(event) {
                             rgrid.appendChild(col);
                             ccontent.appendChild(rgrid);
                         }
+
+                        var name = document.createElement('div');
+                        name.className = 'row';
+                        var namecontent = document.createElement('div');
+                        namecontent.className = 'col';
+                        namecontent.innerHTML = data.results[i].name;
+                        name.appendChild(namecontent);
+                        ccontent.appendChild(name);
 
                         var ctitle = document.createElement('div');
                         ctitle.className = 'col';
