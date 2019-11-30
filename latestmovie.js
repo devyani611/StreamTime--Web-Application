@@ -54,7 +54,8 @@ function latest(event) {
                 headrow.className='row';
                 var innerheading = document.createElement('div');
                 innerheading.className = 'col-12';
-                innerheading.innerHTML = "Title : "+ data.results[i].title;               
+                innerheading.innerHTML = "Title : "+ data.results[i].title; 
+                innerheading.id= "movietitle"              
 
                headrow.appendChild(innerheading);
                innercgrid.appendChild(headrow);

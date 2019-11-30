@@ -52,33 +52,89 @@
             margin-right: 10%;
         }
 
-        .margin {
-            margin-top: 1%;
-            margin-left: auto;
-            margin-right: auto;
-            font-family: cursive;
-            font-size: 4vh;
-            color: darkslategray;
-        }
-
         .container {
             margin-left: 12%;
             margin-right: 12%;
-            width: 75%;
+            width: 80%;
         }
 
         #center {
-            margin-left: auto;
+            margin-left: 56%;
             margin-right: auto;
         }
 
         .text {
-            margin-top: 25%;
+            margin-top: 2%;
             margin-bottom: 25%;
             font-family: cursive;
             font-size: 5vh;
             color: black;
+            margin-left:auto;
+            margin-right: auto;
+            font-weight: bold;
         }
+      
+        .arrow {
+                animation: pulse 2s 3s ease-out infinite;
+                position: absolute;
+                bottom: 4vh;
+                left: 0;
+                right: 0;
+                text-align: center;
+                z-index: 10;
+                margin-top: 5px;
+                margin-bottom: -10px;
+            }
+           
+        @keyframes pulse {
+            0% {
+                opacity: 1.5;
+                transform: none;
+            }
+            50% {
+                opacity: .9;
+                transform: scale(.9);
+            }
+            100% {
+                opacity: 1.5;
+                transform: none;
+            }
+        }
+        html {
+        box-sizing: border-box;
+        }
+
+        .column {
+        float: left;
+        width: 28%;
+        margin-bottom: 16px;
+        margin-left: 32px;
+        padding: 4px 8px;
+        }
+
+        .card {
+        box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .button {
+        border: none;
+        outline: 0;
+        display: inline-block;
+        padding: 6px;
+        color: white;
+        background-color: #000;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+        }
+
+        .button:hover {
+        background-color: #555;
+        }
+        h2{
+            text-align: center;
+        }
+        
     </style>
 </head>
 
@@ -120,41 +176,49 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-sm-2 ">
-                <p class="text" id="center">Developer<br> Info...</p>
+            <div class="col-sm-8 ">
+                <p class="text" id="center">Meet Our Team</p>
             </div>
-            <div class="col-sm">
-                <div class="row">
-                    <div class="col">
-                        <img src="Amee.PNG" id="dimension">
+    <section class="arrow">
+      <img src="arrow.png" width="50">
+    </section>
+   
+            <div class="row">
+                <div class="column">
+                  <div class="card">
+                    <img src="Amee.png" alt="Amee" style="width:100%">
+                    <div class="container">
+                      <h2>Amee Sankhesara</h2>
+                      <p><button class="button">
+                        Profile</button></p>
                     </div>
+                  </div>
                 </div>
-                <div class="row">
-                    <p class="margin">Amee </p>
-                </div>
-            </div>
-            <div class="col-sm ">
-                <div class="row">
-                    <div class="col">
-                        <img src="Vinaya.png" id="dimension">
+              
+                <div class="column">
+                  <div class="card">
+                    <img src="Devyani.png" alt="Devyani" style="width:100%">
+                    <div class="container">
+                      <h2>Devyani Shrivastava</h2>
+                      <p><button class="button" onclick="window.location.href='https://devyani611.github.io/'">
+                        Profile</button></p>
                     </div>
+                  </div>
                 </div>
-                <div class="row">
-                    <p class="margin">Vinaya </p>
-                </div>
-            </div>
-            <div class="col-sm ">
-                <div class="row">
-                    <div class="col">
-                        <img src="Devyani.jpg" id="dimension">
+                <div class="column">
+                  <div class="card">
+                    <img src="Vinaya.png" alt="Vinaya" style="width:100%">
+                    <div class="container">
+                      <h2>Vinaya D. Bhat</h2>
+                      <p><button class="button">
+                        Profile</button></p>
                     </div>
+                  </div>
                 </div>
-                <div class="row">
-                    <p class="margin">Devyani </p>
-                </div>
+              </div>
             </div>
         </div>
-    </div>
+    
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
