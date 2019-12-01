@@ -89,6 +89,27 @@
                  margin-top:1%;
             }
 
+            #TopBtn {
+            display: none;
+            position: fixed;
+            border: none;
+            outline: none;
+            padding: 10px;
+            bottom: 22px;
+            right: 28px;
+            z-index: 99;
+            color: white;
+            cursor: pointer;   
+            border-radius: 50px;
+            background-color: #450920;
+            font-size: 15px;
+        }
+
+        #TopBtn:hover {
+        background-color: #a54a6d;
+        transform: scale(1.1)translate(-1%, -1%);
+        }
+
             
         </style>
         
@@ -235,10 +256,10 @@
                                             <li>
                                                     <strong>Interests: </strong>Software Engineering, Machine Learning, Artificial Intelligence, Full Stack web development.
                                                     <li>
-                                                     <strong>Databases: Oracle 11g, SQL Server, IBM DB2, PostgresSQL.MongoDB.</strong>       
+                                                     <strong>Databases:</strong> Oracle 11g, SQL Server, IBM DB2, PostgresSQL.MongoDB.     
                                                     </li>
                                                     <li>
-                                                     <strong>Tools Used: Eclipse, Putty, SQL management Studio, Visual Studio, Jupyter, Pycharm.</strong>       
+                                                     <strong>Tools Used: </strong>Eclipse, Putty, SQL management Studio, Visual Studio, Jupyter, Pycharm.     
                                                     </li>
                                                   
                                             </li>
@@ -246,6 +267,28 @@
                             </p>        
                 </div>
             </div>
+            <button onclick="GoToTop()" id="TopBtn" title="Back to top">Top</button>
+            <script>
+                    var b1 = document.getElementById("TopBtn");
+                    window.onscroll = function() {
+                        scroll()
+                        };
+                    function scroll() {
+                      if (document.body.scrollTop > 25 || document.documentElement.scrollTop > 25) 
+                      {
+                        b1.style.display = "block";
+                      } 
+                      else 
+                      {
+                        b1.style.display = "none";
+                      }
+                    }
+                    function GoToTop() {
+                      document.body.scrollTop = 0;
+                      document.documentElement.scrollTop = 0;
+                    }
+                    </script>
+        
 
     <div class="container-fuid" id = "ContactInfo">
     <footer class="page-footer footer font-small">
