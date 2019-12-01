@@ -6,13 +6,13 @@ function NowPlaying(event) {
     event.preventDefault();
     var cgrid = document.createElement('div');
     cgrid.className = 'container';
-   
+    var count = 24;
     
 
     var rgrid = document.createElement('div');
     rgrid.className = 'row';
     rgrid.style.marginBottom = "5%";
-    for(i=1; i <15 ; i++){
+    for(i=1; i <10 ; i++){
         
     fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=3781293e0ca7ba2756598d23d175baf4&language=en-US&page="+i, {
         "method": "GET",
@@ -22,7 +22,7 @@ function NowPlaying(event) {
            response.json()
         )
         .then(data => {
-            document.getElementById('nowplaying_movies').innerHTML = 'nowplaying Movies';
+            document.getElementById('nowplaying_movies').innerHTML = 'Recently Released Movies';
             var divelement = document.getElementById('nowplaying_movies_results');
 
             for (i in data.results) {
@@ -30,7 +30,7 @@ function NowPlaying(event) {
                 var moviedate = data.results[i].release_date;
                 var dateArray = moviedate.split("-");               
 
-                if(((dateArray[2] <= dd && dateArray[1]==mm && dateArray[0]==yyyy)||(dateArray[2] <= (dd+15) && dateArray[1]==mm-1 && dateArray[0]==yyyy) ) && data.results[i].poster_path!=null )
+                if(((dateArray[2] <= dd && dateArray[1]==mm && dateArray[0]==yyyy)||(dateArray[1]==mm-1 && dateArray[0]==yyyy) ) && data.results[i].poster_path!=null && count!=0 )
                 {
 
                 var ccgrid = document.createElement('div');
@@ -47,6 +47,7 @@ function NowPlaying(event) {
                 cpic.alt = ' Poster';
                 picgrid.appendChild(cpic);  
                 innercgrid.appendChild(picgrid);
+                count=count-1;
                
                 
                 var headrow=document.createElement('div');
@@ -63,10 +64,9 @@ function NowPlaying(event) {
                 daterow.className='row';
                 var innerheading2 = document.createElement('div');
                 innerheading2.className = 'col-12'; 
-                innerheading2.innerHTML = "Release Date : "+ data.results[i].release_date;
+                innerheading2.innerHTML = "Released Date : "+ data.results[i].release_date;
                 innerheading2.id= "moviedate"; 
-
-               
+  
                 daterow.appendChild(innerheading2);
                 innercgrid.appendChild(daterow);
 
@@ -78,8 +78,5 @@ function NowPlaying(event) {
 
                 divelement.appendChild(cgrid);
                 }       
-            
-           
-
          } })
 }}

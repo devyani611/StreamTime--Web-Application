@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Recently released movies</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+         body {
+            background: #F9DBBD;
+        }
+        hr {
+            box-sizing: content-box;
+            height: 0;
+            overflow: visible;
+            width:80%;
+            border-top:1px solid #450920;
+            }
+
+        #movietitle{
+            color:black;
+            font-weight: bold;
+        }
+
+        #moviedate{
+            color:black;
+            font-weight: bold;
+        }
+
+        #Image{
+            height: 40vh;  
+            width:30vh;                
+            background-color: white;
+            box-shadow: 4px 6px 8px 0 rgba(0, 0, 0, 0.2), 2px 6px 20px 0 rgba(0, 0, 0, 0.19);
+            margin-bottom: 25px;
+            border: 1px solid black;
+        }
+        
+        #Image:hover {
+            transition: 0.2s;
+            border: 1px solid black;
+            transform: scale(1.1)translate(-1%, -1%);
+            text-shadow: 1px -1px 0 black, 1px -2px 0 black, 
+            1px -3px 0 black,
+                1px -8px 0 black, 
+                5px -13px 15px black;
+        }
+
+        .navbar_styling {
+            background: #450920;
+        }
+
+        .navbar-toggler-icon {
+            background: #F9DBBD;
+        }
+
+        .navbar-collapse .navbar-nav .nav-item .nav-link {
+            color: #F9DBBD;
+        }
+
+      
+        .nav-link:hover, .nav-link:focus {
+            text-decoration: none;
+            transition: 0.2s;
+            color:  #F9DBBD;
+            text-decoration: none;
+            transform: scale(1.1)translate(-1%, -1%);
+            text-shadow: 1px -1px 0 black, 1px -2px 0 black, 
+            1px -3px 0 black,
+                1px -8px 0 black, 
+                5px -13px 15px black;
+            }
+
+        .navbar-brand {
+            color: #F9DBBD;
+            font-size: large;
+            font-family: cursive;
+        }
+        .navbar-brand:hover, .navbar-brand:focus {
+            text-decoration: none;
+            color: #F9DBBD;
+            transition: 0.2s;
+            color:  #F9DBBD;
+            text-decoration: none;
+            transform: scale(1.1)translate(-1%, -1%);
+            text-shadow: 1px -1px 0 black, 1px -2px 0 black, 
+            1px -3px 0 black,
+                1px -8px 0 black, 
+                5px -13px 15px black;
+            }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+        }
+
+        .navbar-toggler {
+            border-color: #F9DBBD;
+        }
+
+        #nowplaying_movies{
+            font-size: 7vh;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            color:#450920;
+            margin-top: 4%;
+            font-weight:bold;
+        }
+
+        .container{
+            font-size:small;
+            text-align: left;
+        }
+        .col-3{
+            padding: 2%;
+        }
+        #TopBtn {
+            display: none;
+            position: fixed;
+            border: none;
+            outline: none;
+            padding: 10px;
+            bottom: 22px;
+            right: 28px;
+            z-index: 99;
+            color: white;
+            cursor: pointer;   
+            border-radius: 50px;
+            background-color: #450920;
+            font-size: 15px;
+        }
+
+        #TopBtn:hover {
+        background-color: #a54a6d;
+        transform: scale(1.1)translate(-1%, -1%);
+        }
+        #nowplaying_movies_results{
+            margin-left: 4.5%;
+        }
+    </style>
+
+</head>
+<body onload="NowPlaying(event)">
+        <nav class="navbar navbar-expand-sm navbar_styling">
+                <a class="navbar-brand" href="index.html">StreamTime</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+        
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto content_styling">
+                        <li class="nav-item">
+                            <a class="nav-link" href="movieSearch.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item active">
+                                <a class="nav-link" href="latest.html">Latest</a>
+                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </nav>
+    <div id="nowplaying_movies">
+      
+    </div>
+    <hr>
+    <div id="nowplaying_movies_results">
+    </div>
+    <button onclick="GoToTop()" id="TopBtn" title="Back to top">Top</button>
+    <script>
+            var b1 = document.getElementById("TopBtn");
+            window.onscroll = function() {
+                scroll()
+                };
+            function scroll() {
+              if (document.body.scrollTop > 15 || document.documentElement.scrollTop > 15) 
+              {
+                b1.style.display = "block";
+              } 
+              else 
+              {
+                b1.style.display = "none";
+              }
+            }
+            function GoToTop() {
+              document.body.scrollTop = 0;
+              document.documentElement.scrollTop = 0;
+            }
+            </script>
+    
+    <script src="nowplaying.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>
