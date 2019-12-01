@@ -19,10 +19,13 @@
         }
 
         .heading,
-        h3 {
+        h1 {
             font-size: 5vh;
             padding: 1cm;
-            font-family: cursive;
+            font-family: Arial, Helvetica, sans-serif;
+            color:#450920;
+            font-weight: bold;
+            margin-top: -4%;
         }
 
         .container {
@@ -95,7 +98,20 @@
 
         #dimension {
             width: 11vw;
-            height: 25vh;
+            height: 25vh;                  
+            background-color: white;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            margin-bottom: 25px;
+        }
+        
+        #dimension:hover {
+            transition: 0.2s;
+            border: 1px solid black;
+            transform: scale(1.1)translate(-1%, -1%);
+            text-shadow: 1px -1px 0 black, 1px -2px 0 black, 
+            1px -3px 0 black,
+                1px -8px 0 black, 
+                5px -13px 15px black;
         }
 
         #col-size
@@ -241,8 +257,8 @@
                 <p>Popular movies of this month</p>  
         </div>
         <div class="row" style="margin-top:2%;" id="popularmovies">
-
         </div>
+        
     </div>
 
     <script src="app.js"></script>

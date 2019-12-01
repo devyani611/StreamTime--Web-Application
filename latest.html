@@ -11,10 +11,41 @@
          body {
             background: #F9DBBD;
         }
+        hr {
+            box-sizing: content-box;
+            height: 0;
+            overflow: visible;
+            width:80%;
+            border-top:1px solid #450920;
+            }
 
         #movietitle{
             color:black;
             font-weight: bold;
+        }
+
+        #moviedate{
+            color:black;
+            font-weight: bold;
+        }
+
+        #Image{
+            height: 40vh;  
+            width:30vh;                
+            background-color: white;
+            box-shadow: 4px 6px 8px 0 rgba(0, 0, 0, 0.2), 2px 6px 20px 0 rgba(0, 0, 0, 0.19);
+            margin-bottom: 25px;
+            border: 1px solid black;
+        }
+        
+        #Image:hover {
+            transition: 0.2s;
+            border: 1px solid black;
+            transform: scale(1.1)translate(-1%, -1%);
+            text-shadow: 1px -1px 0 black, 1px -2px 0 black, 
+            1px -3px 0 black,
+                1px -8px 0 black, 
+                5px -13px 15px black;
         }
 
         .navbar_styling {
@@ -68,16 +99,15 @@
             border-color: #F9DBBD;
         }
 
-
-        #Image{
-            height: 40vh;
-        }
         #upcoming_movies{
             font-size: 7vh;
             text-align: center;
-            font-family: cursive;
+            font-family: Arial, Helvetica, sans-serif;
+            color:#450920;
             margin-top: 4%;
+            font-weight:bold;
         }
+
         .container{
             font-size:small;
             text-align: left;
@@ -104,6 +134,9 @@
         #TopBtn:hover {
         background-color: #a54a6d;
         transform: scale(1.1)translate(-1%, -1%);
+        }
+        #upcoming_movies_results{
+            margin-left: 4.5%;
         }
     </style>
 
@@ -134,7 +167,9 @@
                 </div>
             </nav>
     <div id="upcoming_movies">
+      
     </div>
+    <hr>
     <div id="upcoming_movies_results">
     </div>
     <button onclick="GoToTop()" id="TopBtn" title="Back to top">Top</button>

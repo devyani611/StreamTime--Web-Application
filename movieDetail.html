@@ -28,8 +28,10 @@
         #Result,#image_gallery {
             font-size: 7vh;
             text-align: center;
-            font-family: cursive;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
             margin-top: 4%;
+            color:hsl(337, 77%, 15%);
         }
 
         #Image {
@@ -146,6 +148,26 @@
              margin-bottom: 5%;
              margin-top: 5%;
          }
+         #TopBtn {
+            display: none;
+            position: fixed;
+            border: none;
+            outline: none;
+            padding: 10px;
+            bottom: 22px;
+            right: 28px;
+            z-index: 99;
+            color: white;
+            cursor: pointer;   
+            border-radius: 50px;
+            background-color: #450920;
+            font-size: 15px;
+        }
+
+        #TopBtn:hover {
+        background-color: #a54a6d;
+        transform: scale(1.1)translate(-1%, -1%);
+        }
 
       
     </style>
@@ -183,7 +205,27 @@
     </div>
     <div id="image_gallery_results">
     </div>
-
+    <button onclick="GoToTop()" id="TopBtn" title="Back to top">Top</button>
+    <script>
+            var b1 = document.getElementById("TopBtn");
+            window.onscroll = function() {
+                scroll()
+                };
+            function scroll() {
+              if (document.body.scrollTop > 15 || document.documentElement.scrollTop > 15) 
+              {
+                b1.style.display = "block";
+              } 
+              else 
+              {
+                b1.style.display = "none";
+              }
+            }
+            function GoToTop() {
+              document.body.scrollTop = 0;
+              document.documentElement.scrollTop = 0;
+            }
+            </script>
 
     <script src="app.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
