@@ -319,7 +319,7 @@ function moviesearch(event) {
 
                                 var ctitle = document.createElement('div');
                                 ctitle.className = 'col-3';
-                                ctitle.innerHTML = "Number of Seasons :";
+                                ctitle.innerHTML = "Seasons :";
 
                                 var ccontent = document.createElement('div');
                                 ccontent.className = 'col';
