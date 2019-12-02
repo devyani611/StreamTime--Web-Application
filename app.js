@@ -372,6 +372,7 @@ function findStramingLocation(event) {
             }
 
             else {
+                document.getElementById('Result').innerHTML = 'Here are your search matches';
                 for (i in data.results) {
                     var divelement = document.getElementById('add_Array');
                     var DistinctLocation = [];
@@ -430,6 +431,7 @@ function findStramingLocation(event) {
                         name.className = 'row';
                         var namecontent = document.createElement('div');
                         namecontent.className = 'col';
+                        namecontent.id= 'title';
                         namecontent.innerHTML = data.results[i].name;
                         name.appendChild(namecontent);
                         ccontent.appendChild(name);

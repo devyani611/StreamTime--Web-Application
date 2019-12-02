@@ -16,6 +16,7 @@
         
         .container {
             margin-top: 5%;
+           
         }
 
         .navbar_styling {
@@ -74,24 +75,46 @@
             text-align: center;
             font-family: Arial, Helvetica, sans-serif;
             font-weight: bold;
-            margin-top: 4%;
+            margin-top: 1%;
             color: #450920;
+            margin-bottom:3% ;
         }
+       
 
         #dimension {
-            width: 16vw;
-            height: 32vh;
-            border: solid black;
+            height: 40vh;  
+            width:30vh;                
+            background-color: white;
+            box-shadow: 4px 6px 8px 0 rgba(0, 0, 0, 0.2), 2px 6px 20px 0 rgba(0, 0, 0, 0.19);
+            margin-bottom: 25px;
+            border: 1px solid black;
+        }
+        #dimension:hover {
+            transition: 0.2s;
+            border: 1px solid black;
+            transform: scale(1.1)translate(-1%, -1%);
+            text-shadow: 1px -1px 0 black, 1px -2px 0 black, 
+            1px -3px 0 black,
+                1px -8px 0 black, 
+                5px -13px 15px black;
+        }
+        #title{
+            color:black;
+            font-weight: bold;
+        
         }
 
         #poster {
-            width: 16vw;
-            height: 32vh;
-            border: solid black;
+            width: 30vh;
+            height: 40vh;
+            background-color: grey;
+            box-shadow: 4px 6px 8px 0 rgba(0, 0, 0, 0.2), 2px 6px 20px 0 rgba(0, 0, 0, 0.19);
+            margin-bottom: 25px;
+            border: 1px solid black;
             color: black;
-            background-color: lightgray;
             font-weight: 500;
             font-size: 20px;
+          
         }
 
         #postertext {
@@ -134,6 +157,7 @@
     <div class="container">
         <div id="Result">
         </div>
+      
         <div class="row" id="add_Array">
         </div>
     </div>
