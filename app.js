@@ -18,7 +18,7 @@ function moviesearch(event) {
                 document.getElementById('Result').innerHTML = 'Here are your search matches ';
                 for (i in data.Search) {
                     imdbid = data.Search[i].imdbID;
-                    fetch("https://movie-database-imdb-alternative.p.rapidapi.com/?i=" + imdbid + "&r=json", {
+                    fetch("https://movie-database-imdb-alternative.p.rapidapi.com/?i=" + imdbid + "&r=json&plot=full", {
                         "method": "GET",
                         "headers": {
                             "x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com",
@@ -125,22 +125,6 @@ function moviesearch(event) {
 
                             var ctitle = document.createElement('div');
                             ctitle.className = 'col-3';
-                            ctitle.innerHTML = "Plot :";
-
-                            var ccontent = document.createElement('div');
-                            ccontent.className = 'col';
-                            ccontent.innerHTML = response.Plot;
-
-                            rrgrid.append(ctitle);
-                            rrgrid.append(ccontent);
-                            cgrid.appendChild(rrgrid);
-                            divelement.appendChild(cgrid);
-
-                            var rrgrid = document.createElement('div');
-                            rrgrid.className = 'row';
-
-                            var ctitle = document.createElement('div');
-                            ctitle.className = 'col-3';
                             ctitle.innerHTML = "Language :";
 
                             var ccontent = document.createElement('div');
@@ -184,6 +168,23 @@ function moviesearch(event) {
                             cgrid.appendChild(rrgrid);
                             divelement.appendChild(cgrid);
 
+                            var rrgrid = document.createElement('div');
+                            rrgrid.className = 'row';
+                            rrgrid.id='Plot';
+
+                            var ctitle = document.createElement('div');
+                            ctitle.className = 'col-3';
+                            ctitle.innerHTML = "Plot :";
+
+                            var ccontent = document.createElement('div');
+                            ccontent.className = 'col';
+                            ccontent.innerHTML = response.Plot;
+
+                            rrgrid.append(ctitle);
+                            rrgrid.append(ccontent);
+                            cgrid.appendChild(rrgrid);
+                            divelement.appendChild(cgrid);         
+                          
                             var rrgrid = document.createElement('div');
                             rrgrid.className = 'row';
 
@@ -491,7 +492,7 @@ function addimagegallery(event) {
         )
         .then(data => {
             if (data.Response == "True") {
-                fetch("https://www.googleapis.com/customsearch/v1?q=" + name + "&searchType=image", {
+                fetch("https://www.googleapis.com/customsearch/v1?q=" + name + "&cx=007406524667026610117:ibv07ximgpk&key=AIzaSyDE0Xp8V6sMIFOSYyd4sGjNm-xlFL7gENQ&searchType=image", {
                     "method": "GET"
                 })
                     .then(response =>
@@ -503,37 +504,38 @@ function addimagegallery(event) {
                         /**Creating a Bootstrap grid container */
                         var cgrid = document.createElement('div');
                         cgrid.className = 'container';
+                        cgrid.id="image_gallery_pics";
 
                         var rgrid = document.createElement('div');
                         rgrid.className = 'row';
                         rgrid.style.marginBottom = "5%";
 
                         var ccontent = document.createElement('div');
-                        ccontent.className = 'col-6';
+                        ccontent.className = 'col-5';
                         var cpic = document.createElement('img')
                         cpic.src = data.items[0].link;
                         cpic.id = "Image_Gallery";
                         cpic.alt = data + ' Poster';
                         ccontent.appendChild(cpic);
                         rgrid.appendChild(cpic);
+
                         var ccontent = document.createElement('div');
-                        ccontent.className = 'col-6';
+                        ccontent.className = 'col-5';
                         var cpic = document.createElement('img')
                         cpic.src = data.items[1].link;
                         cpic.id = "Image_Gallery";
                         cpic.alt = data + ' Poster';
                         ccontent.appendChild(cpic);
                         rgrid.appendChild(cpic);
+
                         cgrid.appendChild(rgrid);
-
-
 
                         var rgrid = document.createElement('div');
                         rgrid.className = 'row';
                         rgrid.style.marginBottom = "5%";
 
                         var ccontent = document.createElement('div');
-                        ccontent.className = 'col-6';
+                        ccontent.className = 'col-5';
                         var cpic = document.createElement('img')
                         cpic.src = data.items[2].link;
                         cpic.id = "Image_Gallery";
@@ -541,7 +543,7 @@ function addimagegallery(event) {
                         ccontent.appendChild(cpic);
                         rgrid.appendChild(cpic);
                         var ccontent = document.createElement('div');
-                        ccontent.className = 'col-6';
+                        ccontent.className = 'col-5';
                         var cpic = document.createElement('img')
                         cpic.src = data.items[3].link;
                         cpic.id = "Image_Gallery";
@@ -556,7 +558,7 @@ function addimagegallery(event) {
                         rgrid.style.marginBottom = "5%";
 
                         var ccontent = document.createElement('div');
-                        ccontent.className = 'col-6';
+                        ccontent.className = 'col-5';
                         var cpic = document.createElement('img')
                         cpic.src = data.items[4].link;
                         cpic.id = "Image_Gallery";
@@ -564,7 +566,7 @@ function addimagegallery(event) {
                         ccontent.appendChild(cpic);
                         rgrid.appendChild(cpic);
                         var ccontent = document.createElement('div');
-                        ccontent.className = 'col-6';
+                        ccontent.className = 'col-5';
                         var cpic = document.createElement('img')
                         cpic.src = data.items[5].link;
                         cpic.id = "Image_Gallery";
@@ -579,7 +581,7 @@ function addimagegallery(event) {
                         rgrid.style.marginBottom = "5%";
 
                         var ccontent = document.createElement('div');
-                        ccontent.className = 'col-6';
+                        ccontent.className = 'col-5';
                         var cpic = document.createElement('img')
                         cpic.src = data.items[6].link;
                         cpic.id = "Image_Gallery";
@@ -587,7 +589,7 @@ function addimagegallery(event) {
                         ccontent.appendChild(cpic);
                         rgrid.appendChild(cpic);
                         var ccontent = document.createElement('div');
-                        ccontent.className = 'col-6';
+                        ccontent.className = 'col-5';
                         var cpic = document.createElement('img')
                         cpic.src = data.items[7].link;
                         cpic.id = "Image_Gallery";
@@ -602,7 +604,7 @@ function addimagegallery(event) {
                         rgrid.style.marginBottom = "5%";
 
                         var ccontent = document.createElement('div');
-                        ccontent.className = 'col-6';
+                        ccontent.className = 'col-5';
                         var cpic = document.createElement('img')
                         cpic.src = data.items[8].link;
                         cpic.id = "Image_Gallery";
@@ -610,7 +612,7 @@ function addimagegallery(event) {
                         ccontent.appendChild(cpic);
                         rgrid.appendChild(cpic);
                         var ccontent = document.createElement('div');
-                        ccontent.className = 'col-6';
+                        ccontent.className = 'col-5';
                         var cpic = document.createElement('img')
                         cpic.src = data.items[9].link;
                         cpic.id = "Image_Gallery";
