@@ -15,13 +15,13 @@ res.sendFile(`${__dirname}/contact.html`)
 app.post('/', (req, res) => {
     // Instantiate the SMTP server
     const transport = nodemailer.createTransport({
-      host: 'smtp.mailtrap.io',
-      secure: false,
+      service: 'gmail',
+      //secure: false,
       auth: {
         // mailtrap generated user id
-        user: '938dacc2fXXXXX',
+        user: 'xxxxxxxxxxxxxxxxxxx@gmail.com',
         // mailtrap generated password
-        pass: '51a19de86XXXXX'
+        pass: 'xxxxxxxxxxxxx'
       }
     });
     
@@ -29,7 +29,7 @@ app.post('/', (req, res) => {
       // sender's address
       from: req.body.email, 
       //receiver's address
-      to: 'shrivastavahoney611@gmail.com', 
+      to: 'shrivastavadevyani611@gmail.com, vinaya.dbhat@gmail.com, amisankhesara',
       subject: 'Movie search',
       //content received from HTML form
       text: `${req.body.name} (${req.body.email}) says: ${req.body.message}`
