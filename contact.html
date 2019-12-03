@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
-  <head>
-      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css"/>
-      <style type="text/css">          
 
-            body {
+<head>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+    <style type="text/css">
+        body {
             background: #F9DBBD;
         }
 
@@ -20,36 +21,39 @@
             color: #F9DBBD;
         }
 
-        
-        .nav-link:hover, .nav-link:focus {
+
+        .nav-link:hover,
+        .nav-link:focus {
             text-decoration: none;
             transition: 0.2s;
-            color:  #F9DBBD;
+            color: #F9DBBD;
             text-decoration: none;
             transform: scale(1.1)translate(-1%, -1%);
-            text-shadow: 1px -1px 0 black, 1px -2px 0 black, 
-            1px -3px 0 black,
-                1px -8px 0 black, 
+            text-shadow: 1px -1px 0 black, 1px -2px 0 black,
+                1px -3px 0 black,
+                1px -8px 0 black,
                 5px -13px 15px black;
-            }
+        }
 
         .navbar-brand {
             color: #F9DBBD;
             font-size: large;
             font-family: cursive;
         }
-        .navbar-brand:hover, .navbar-brand:focus {
+
+        .navbar-brand:hover,
+        .navbar-brand:focus {
             text-decoration: none;
             color: #F9DBBD;
             transition: 0.2s;
-            color:  #F9DBBD;
+            color: #F9DBBD;
             text-decoration: none;
             transform: scale(1.1)translate(-1%, -1%);
-            text-shadow: 1px -1px 0 black, 1px -2px 0 black, 
-            1px -3px 0 black,
-                1px -8px 0 black, 
+            text-shadow: 1px -1px 0 black, 1px -2px 0 black,
+                1px -3px 0 black,
+                1px -8px 0 black,
                 5px -13px 15px black;
-            }
+        }
 
         .navbar-toggler-icon {
             background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
@@ -59,94 +63,93 @@
             border-color: #F9DBBD;
         }
 
-            .center
-            {
-                margin-left: auto;
-                margin-right: auto;
-                margin-top: 8%;
-                margin-bottom: 8%;
-                background: #450920;
-                color: #F9DBBD;
-            }
-
-        footer
-        {
-            background-color: #450920;
-            margin-left:auto;
-            margin-right:auto;
-            text-align:center;
-            color:#F9DBBD;
-            margin-top:3%;
-            padding: 1%;
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 8%;
+            margin-bottom: 8%;
+            background: #450920;
+            color: #F9DBBD;
         }
 
-      </style>
-    </head>
-   <body>
-      <nav class="navbar navbar-expand-sm navbar_styling">
-          <a class="navbar-brand" href="index.html">StreamTime</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-  
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ml-auto content_styling font">
-                  <li class="nav-item">
-                      <a class="nav-link" href="movieSearch.html">Home</a>
-                  </li>
-                  <li class="nav-item">
+        footer {
+            background-color: #450920;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            color: #F9DBBD;
+            margin-top: 3%;
+            padding: 1%;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm navbar_styling">
+        <a class="navbar-brand" href="index.html">StreamTime</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto content_styling font">
+                <li class="nav-item">
+                    <a class="nav-link" href="movieSearch.html">Home</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="nowplaying.html">Latest</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="latest.html">Upcoming</a>
                 </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="about.html">About</a>
-                  </li>
-                 
-                  <li class="nav-item active">
-                      <a class="nav-link" href="contact.html">Contact</a>
-                  </li>
-                  
-              </ul>
-          </div>
-      </nav>
-     <div class="container">
-                <div class="row">
-                    <div class="col-sm">
-             <form action= "/" method= "POST" class="border border-dark p-4 w-25 center">
-                  <div class="form-group"> 
-                    <p class="text-center">CONTACT US</p>
-                  </div>
-            
-                  <div class="form-group">
-                      <label for="name">Name</label>
-                      <br>
-                      <input type="text" class="form-control input-lg" name="name">
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <form action="/" method="POST" class="border border-dark p-4 w-25 center">
+                    <div class="form-group">
+                        <p class="text-center">CONTACT US</p>
                     </div>
-      
-                  <div class="form-group"> 
-                      <label for="Email">Email</label>
-                      <br>
-                      <input type="email" class="form-control" name="email">
-                  </div>
-        
-                  <div class="form-group" > 
-                    <label for="comment">Comment</label>
-                    <br>
-                    <textarea name="message" class="form-control"></textarea>
-                  </div>
-      
-                  <div class="form-group" >
-                      <button type="submit" class="btn btn-primary btn-md">Submit </button>
-                      <button type="reset" class="btn btn-secondary btn-md">Reset </button>      
-                  </div>
-          </form> 
+
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <br>
+                        <input type="text" class="form-control input-lg" name="name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Email">Email</label>
+                        <br>
+                        <input type="email" class="form-control" name="email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comment">Comment</label>
+                        <br>
+                        <textarea name="message" class="form-control"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-md">Submit </button>
+                        <button type="reset" class="btn btn-secondary btn-md">Reset </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-    </div>
-    <footer> 
+    <footer>
         © 2019 All rights reserved
     </footer>
-    </body>  
+</body>
+
 </html>
