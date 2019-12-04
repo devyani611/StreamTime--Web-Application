@@ -51,8 +51,9 @@ app.post('/', (req, res) => {
         console.log(info)
       }
     })
-    res.send('<h2>Message sent successfully</h2>')
-    //res.redirect('/thankyou')
+   
+    res.sendFile(path.join(__dirname+'/View/thankyou.html'));
+
   })
   app.listen (3000,function()
  {
